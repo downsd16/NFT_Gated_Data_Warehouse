@@ -1,27 +1,90 @@
-# NftGateFrontend
+# NFT Authentication PoC
+Software Development Intern Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+---
 
-## Development server
+**_Author:_** <br>
+&nbsp; Devin Downs (Intern) <br> 
+&nbsp; Software Development
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+**_Description:_** <br>
+&nbsp; This is a simple project using the ERC 1155 token standard for <br>
+&nbsp; Decentralized Identification. This project uses NFT's to give <br>
+&nbsp; access to data and other resources promised by the minter.<b>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+**_Project Structure_** <br>
+<b>contracts:</b>    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solidity contracts for the project <br>
+<b>lib:</b>          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Library with helpers and other dependencies <br>
+<b>tasks:</b>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TypeScript file with hardhat tasks for deployment and minting <br>
+<b>media:</b>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Any media for webapp portion <br>
+<b>scripts:</b>      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Misc. JS files for ethers provider injection, etc. <br>
+<b>tests:</b>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hardhat tests <br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+#Install Dependencies: _(Ubuntu Server LTS)_
+1. Node Version Manager (NVM):
+~~~
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+~~~
+2. Node.js and Node Package Manager (NPM)
+~~~
+nvm install node
+npm install --save-dev ts-node typescript
+~~~
+3. Hardhat:
+~~~
+mkdir DESIRED_REPO_NAME
+cd DESIRED_REPO_NAME
+npm init --yes
+npm install --save-dev hardhat
+~~~
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+Testing/Hardhat Dependencies
+~~~
+npm install --save-dev sinon
+npm install --save-dev chai
+npm install --save-dev sinon-chai
+npm install --save-dev chai @types/node @types/mocha @types/chai
+npm install --save-dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethereum-waffle chai
+npm install --save dotenv
+~~~
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+#Configure Alchemy:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+---
+
+#Create Environment Variables: _(Ubuntu Server LTS)_
+Create a new .env file in the project directory<br>
+~~~
+touch .env
+sudo nano ~/PROJECT_ROOT_DIRECTORY/.env
+---OR---
+vim ~/PROJECT_ROOT_DIRECTORY/.env
+~~~
+We then want to add a couple enviroment variables
+~~~
+ETH_PRIVATE_KEY =       // The private key of the account you intend to use
+API_URL =           // URL output from the Alchemy configuration 
+TEST_NET_NAME =     //The plaintext name of the testnet you are using (must match Alchemy config)
+ETH_PUBLIC_KEY      //Public address to send all NFT's minted via Hardhat task 
+~~~
+
+---
+
+#Compile Contracts: _(Ubuntu Server LTS)_
+~~~
+npx hardhat compile
+~~~
+
+---
+
+

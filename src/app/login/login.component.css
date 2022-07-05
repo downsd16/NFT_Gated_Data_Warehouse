@@ -1,0 +1,33 @@
+/* Mat-Card Classes */
+.cardMain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color:white;
+}
+
+.cardHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+h1 {
+    font-size: 20px;
+    color: #005288;
+}
+
+/* Container Classes */
+.loginContainer {
+    display: inline-block;
+    max-width: auto;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: auto;
+    padding: 20px;
+  }
+
+.loginContent {
+    margin: 0px;
+}

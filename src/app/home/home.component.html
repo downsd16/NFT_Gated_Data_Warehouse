@@ -17,7 +17,6 @@
       fxLayoutAlign="center"
       fxLayoutGap="10px"
       fxFlexFill
-  
       class="bodyContent"
       >
       <mat-card class="cardMain" fxFlex="33%">
@@ -53,18 +52,16 @@
           fxLayoutAlign="center"
           fxLayoutGap="10px"
           fxFlexFill
+
+          class="buttonContainer"
           >
           <div class="cardMain" fxFlex="50%">
-          <mat-card-actions>
-            <app-button-fab (click)="connect()" color="orange" icon="timeline"></app-button-fab>
+            <app-button-fab (click)="connect()" color="orange" icon="timeline" style="margin: 10px"></app-button-fab>
             <p>Data Access</p>
-          </mat-card-actions>
           </div>
           <div class="cardMain" fxFlex="50%">
-          <mat-card-actions>
-            <app-button-fab (click)="connect()" color="orange" icon="store"></app-button-fab>
+            <app-button-fab (click)="connect()" color="orange" icon="store" style="margin: 10px"></app-button-fab>
             <p>Marketplace</p>
-          </mat-card-actions>
           </div>
           </div>
       </mat-card>

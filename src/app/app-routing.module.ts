@@ -7,11 +7,11 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  { path: 'home', component: HomeComponent},                          //, canActivate: [AuthGuard]
   //{ path: 'data', component: },       ADD FOR DATA WAREHOUSE ROUTE
   //{ path: 'market', component: },     ADD FOR MARKETPLACE ROUTE
   { path: '**', component: PageNotFoundComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({

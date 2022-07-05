@@ -5,7 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import detectEthereumProvider  from "@metamask/detect-provider";
 import { ethers } from 'ethers';
 import { __values } from 'tslib';
-const ControllerABI = require('../../../../../artifacts/contracts/controller.sol/accessController.json');
+const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
 
 const url = 'http://localhost:3003'
 const DEPLOY_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";

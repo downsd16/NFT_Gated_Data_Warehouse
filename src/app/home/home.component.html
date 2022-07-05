@@ -1,0 +1,73 @@
+<div class="homeHeaderContainer">
+    <mat-card class="cardMain">
+      <mat-card-header class="cardHeader">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jabil_Circuit_Logo.svg"
+          style="max-width: 75%; height: auto; width: auto; margin-bottom: 5%"
+        />
+        <h1>Data Warehouse Home</h1>
+      </mat-card-header>
+    </mat-card>
+  </div>
+  
+  <div class="homeBodyContainer">
+    <div
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxFlexFill
+  
+      class="bodyContent"
+      >
+      <mat-card class="cardMain" fxFlex="33%">
+        <mat-card-header class="cardHeader">
+          <mat-card-title>
+            <h1>Wallet</h1>
+          </mat-card-title>
+        </mat-card-header>
+  
+        <mat-card-content class="homeContent">
+          <p>Account:</p>
+          <p>{{ account }}</p>
+          <p>Network:</p>
+          <p>{{ network }}</p>
+        </mat-card-content>
+  
+        <mat-card-actions>
+          <app-button (click)="connect()" color="orange" text="Connect">
+          </app-button>
+        </mat-card-actions>
+      </mat-card>
+  
+      <mat-card class="cardMain" fxFlex="67%">
+        <mat-card-header class="cardHeader">
+          <mat-card-title>
+            <h1>Data Ticket Actions</h1>
+          </mat-card-title>
+        </mat-card-header>
+  
+        <div
+          fxLayout="row"
+          fxLayout.xs="column"
+          fxLayoutAlign="center"
+          fxLayoutGap="10px"
+          fxFlexFill
+          >
+          <div class="cardMain" fxFlex="50%">
+          <mat-card-actions>
+            <app-button-fab (click)="connect()" color="orange" icon="timeline"></app-button-fab>
+            <p>Data Access</p>
+          </mat-card-actions>
+          </div>
+          <div class="cardMain" fxFlex="50%">
+          <mat-card-actions>
+            <app-button-fab (click)="connect()" color="orange" icon="store"></app-button-fab>
+            <p>Marketplace</p>
+          </mat-card-actions>
+          </div>
+          </div>
+      </mat-card>
+    </div>
+  </div>
+  

@@ -1,0 +1,70 @@
+/* Mat-Card Classes */
+
+.cardMain {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardTest {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.cardHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+p {
+    color: #005288;
+}
+
+h1 {
+    font-size: 20px;
+    color: #005288;
+}
+
+
+
+/* Container Classes */
+
+.homeHeaderContainer {
+    display: inline-block;
+    max-width: auto;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: auto;
+    padding: 30px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+  }
+
+.homeBodyContainer {
+    overflow: hidden;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: auto;
+    padding: 30px;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.homeContent {
+    margin: 0px;
+}
+
+div {
+    overflow:hidden;
+}
+
+.bodyContent {
+    padding: 1px;
+}
+
+app-button-fab {
+    align-items: center;
+}

@@ -7,9 +7,9 @@ import { ethers } from 'ethers';
 import { __values } from 'tslib';
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
 
-const url = 'http://localhost:3003'
+const WEB_SRVR_URL = 'http://localhost:3003'
+const API_KEY = "k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
 const DEPLOY_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
-//const AccessController = JSON.parse(ControllerABI);
 
 
 interface NonceResponse {
@@ -28,6 +28,12 @@ export class MetamaskService {
 
   constructor(private http: HttpClient) {}
 
+  /*
+  *   MetaMask Authentication Function
+  *
+  *   @dev:   Connects with the backend via http to sign and 
+  *           verify wallet using a random nonce 
+  */
   metamaskLogin() {
 
     let ethereum: any;
@@ -81,12 +87,12 @@ export class MetamaskService {
     // 4 - Send signature to server for verification
     switchMap((sig) => 
         this.http.post<VerifyResponse>(
-          `${ url }/verify`,
+          `${ WEB_SRVR_URL }/verify`,
           { address: ethereum.selectedAddress, signature: sig }
         )
       ),
 
-    // 5 - Return the Wallet Data if authenticated
+    // 5 - Return true if authenticated through both methods
     switchMap(
       async (response) => {
         let hasToken = false;
@@ -143,8 +149,8 @@ private toHex(stringToConvert: string) {
   public async checkIdentification(address: any) {
     let value = false
     
-    //const provider = ethers.getDefaultProvider("http://localhost:8545")
-    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
+    const provider = new ethers.providers.AlchemyProvider("goerli", API_KEY)
+    //const provider = new ethers.providers.JsonRpcProvider(API_URL)
     const signer = provider.getSigner(address)
 
     const contractInstanceForUser = new ethers.Contract(

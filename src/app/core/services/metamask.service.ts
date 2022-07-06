@@ -7,7 +7,10 @@ import { ethers } from 'ethers';
 import { __values } from 'tslib';
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
 
+const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 const url = 'http://localhost:3003'
+const testSecret = "6Xbzysfcky3R73B7KddC"           //Move to more secure location
 const DEPLOY_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
 //const AccessController = JSON.parse(ControllerABI);
 
@@ -80,7 +83,7 @@ export class MetamaskService {
 
     // 4 - Send signature to server for verification
     switchMap((sig) => 
-        this.http.post<VerifyResponse>(
+        this.http.post(
           `${ url }/verify`,
           { address: ethereum.selectedAddress, signature: sig }
         )
@@ -89,13 +92,20 @@ export class MetamaskService {
     // 5 - Return the Wallet Data if authenticated
     switchMap(
       async (response) => {
-        let hasToken = false;
+        let hasToken = await this.checkIdentification(ethereum.selectedAddress)
+        
+        if(response != null && hasToken) {
+          const token = (<string>response).split(' ')[1];
 
-        if(response.verified) {
-          hasToken = await this.checkIdentification(ethereum.selectedAddress)
+          jwt.verify(token, testSecret, (err: any) => {
+            if (err) {
+                return null;
+            }
+            
+            return token;
+          });
         }
-
-        return (response.verified && hasToken)
+        return null;
     })
   );
 }

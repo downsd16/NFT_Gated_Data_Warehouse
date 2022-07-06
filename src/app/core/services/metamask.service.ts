@@ -9,7 +9,8 @@ const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/co
 
 const WEB_SRVR_URL = 'http://localhost:3003'
 const API_KEY = "k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
-const DEPLOY_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
+const API_URL = "https://eth-goerli.g.alchemy.com/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
+const DEPLOY_ADDRESS = "0xf940bC86Dd844FB43BE8F5D8E00AfB87675876C1";
 
 
 interface NonceResponse {
@@ -149,9 +150,13 @@ private toHex(stringToConvert: string) {
   public async checkIdentification(address: any) {
     let value = false
     
-    const provider = new ethers.providers.AlchemyProvider("goerli", API_KEY)
-    //const provider = new ethers.providers.JsonRpcProvider(API_URL)
-    const signer = provider.getSigner(address)
+    //const provider = new ethers.providers.AlchemyProvider("goerli", API_KEY)
+    //const provider: any = await detectEthereumProvider()
+    //const provider = ethers.getDefaultProvider(API_URL)
+    const provider = new ethers.providers.JsonRpcProvider(API_URL)
+
+    //const signer = provider.getSigner(address)
+    const signer = new ethers.VoidSigner(address, provider)
 
     const contractInstanceForUser = new ethers.Contract(
       DEPLOY_ADDRESS,
@@ -180,7 +185,7 @@ private toHex(stringToConvert: string) {
       await provider.request({
         method: 'wallet_switchEthereumChain',
         params: [{
-          chainId: '0x7A69'                              
+          chainId: '0x5'                              
         }],
       });
     } catch (error: any) {

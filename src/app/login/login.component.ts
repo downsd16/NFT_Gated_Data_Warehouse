@@ -19,13 +19,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   async metamaskHelper() {
-    this.metamaskService.metamaskLogin().pipe().subscribe( async (isAuthenticated: boolean) => {
-      if(isAuthenticated) {
-        this._router.navigate(['home'])
-      }
-    })
-    
-
+    this.metamaskService.metamaskLogin().pipe().subscribe( async (isAuthenticated: boolean) => { if(isAuthenticated) { this._router.navigate(['home']) }})
+    //this._router.navigate(['home'])
   }
 
 }

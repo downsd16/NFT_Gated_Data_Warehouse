@@ -54,12 +54,10 @@ export class MetamaskService {
         ethereum = provider;
 
         ethereum.on('accountsChanged', function() {
-          window.location.reload()
           console.log("ACCOUNT CHANGE")
         });
         
         ethereum.on('chainChanged', function() {
-          window.location.reload()
           console.log("NETWORK CHANGE")
         });
         

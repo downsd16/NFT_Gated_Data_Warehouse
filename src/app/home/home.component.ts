@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const data = await this.metamaskService.getWalletData();
+    
     const networks = new Map<string, string>([
       ["0x1", "Mainnet"],
       ["0x3", "Ropsten"],

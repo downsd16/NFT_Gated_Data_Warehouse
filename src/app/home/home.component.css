@@ -41,8 +41,7 @@ h1 {
 /* Container Classes */
 
 .homeHeaderContainer {
-    display: inline-block;
-    max-width: auto;
+    max-width: 70%;
     margin: 30px auto;
     overflow: auto;
     min-height: auto;
@@ -53,6 +52,7 @@ h1 {
 
 .homeBodyContainer {
     overflow: hidden;
+    max-width: 70%;
     margin: 30px auto;
     overflow: auto;
     min-height: auto;

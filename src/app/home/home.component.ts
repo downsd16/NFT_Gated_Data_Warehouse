@@ -18,8 +18,14 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const data = await this.metamaskService.getWalletData();
+    const networks = new Map<string, string>([
+      ["0x1", "Mainnet"],
+      ["0x3", "Ropsten"],
+      ["0x4", "Rinkeby"],
+      ["0x5", "Goerli"]
+    ])
 
-    this.network = data[0];
+    this.network = networks.get(data[0])!;
     this.account = data[1];
   }
 
@@ -33,4 +39,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  visitMarketplace() {
+    window.location.href = ('https://testnets.opensea.io/collection/nonfungibletrust-controller-v2');
+  }
 }

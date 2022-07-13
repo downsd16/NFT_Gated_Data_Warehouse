@@ -8,9 +8,11 @@ import { __values } from 'tslib';
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
 
 const WEB_SRVR_URL = 'http://localhost:3003'
-const API_KEY = "k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
-const API_URL = "https://eth-goerli.g.alchemy.com/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
-const DEPLOY_ADDRESS = "0x35170D220AF5E193DC56fAa42DBCd486595525C6";
+const API_URL = "https://eth-rinkeby.alchemyapi.io/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
+const DEPLOY_ADDRESS = "0x20e73B4023bBcaBeA040aC529b14A3f807D3d912";
+
+//Deployed address for first Rinkeby contract
+//const DEPLOY_ADDRESS = "0x35170D220AF5E193DC56fAa42DBCd486595525C6";
 
 //Deployed Address for Hardhat local node
 //const DEPLOY_ADDRESS = "0xf940bC86Dd844FB43BE8F5D8E00AfB87675876C1";
@@ -52,10 +54,12 @@ export class MetamaskService {
         ethereum = provider;
 
         ethereum.on('accountsChanged', function() {
+          window.location.reload()
           console.log("ACCOUNT CHANGE")
         });
         
         ethereum.on('chainChanged', function() {
+          window.location.reload()
           console.log("NETWORK CHANGE")
         });
         

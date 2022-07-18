@@ -2,20 +2,22 @@
     <mat-card class="cardMain">
         <mat-card-header class="cardHeader">
             <img mat-card-avatar src="https://upload.wikimedia.org/wikipedia/commons/3/36/MetaMask_Fox.svg">
-            <mat-card-title>
+            <mat-card-title style="margin-bottom: 0px;">
                 <h1>MetaMask</h1>
             </mat-card-title>    
-        </mat-card-header>
+        </mat-card-header>   
         
-        <mat-card-content class="loginContent">
-            <p> {{ account }} </p>
-        </mat-card-content>
-        
-        <mat-card-actions>
+        <mat-card-actions class="cardActions">
             <app-button
                 (click) = "login()"
                 color="orange"
                 text="Connect Wallet"
+                >
+            </app-button>
+            <app-button
+                (click) = "learn()"
+                color="orange"
+                text="Getting Started"
                 >
             </app-button>
         </mat-card-actions>

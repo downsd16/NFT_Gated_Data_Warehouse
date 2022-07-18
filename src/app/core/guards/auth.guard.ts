@@ -19,18 +19,16 @@ export class AuthGuard implements CanActivate {
 
       return this.metamaskService.metamaskLogin().pipe(
       map(isAuthenticated => {
-        if(!isAuthenticated) 
+        if(isAuthenticated) 
         { 
-          this._router.navigate(['login']);
-          return false 
+          return isAuthenticated 
         } else {
-          return isAuthenticated;
+          this._router.navigate(['login'])
+          return isAuthenticated
         }
-      }
-      ),
-      catchError((error: string) => {
-        console.log("REACHED ERROR IN MM SERVICE:" + error)
-        this._router.navigate(['login']);
+      }),
+      catchError(() => {
+        window.alert("MetaMask Error")
         return of(false)
       }));
 

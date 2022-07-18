@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { from, Observable, of } from 'rxjs';
-import { catchError, switchMap } from 'rxjs/operators';
+import { from, of } from 'rxjs';
+import {  finalize, switchMap } from 'rxjs/operators';
 import detectEthereumProvider  from "@metamask/detect-provider";
 import { ethers } from 'ethers';
 import { __values } from 'tslib';
-import { NgIfContext } from '@angular/common';
+import { Router } from '@angular/router';
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
 
 const WEB_SRVR_URL = 'http://localhost:3003'
@@ -26,7 +26,10 @@ interface VerifyResponse {
 
 export class MetamaskService {
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private ngZone: NgZone) {}
 
   /*
   *   MetaMask Authentication Function
@@ -49,8 +52,15 @@ export class MetamaskService {
         ethereum = provider;
         
         ethereum.on('accountsChanged', () => {
-          console.log("ACCOUNT CHANGE")
-          throw ('Please Login Again')
+          this.ngZone.run(() => {
+            this.router.navigate(['login'])
+          })
+        });
+
+        ethereum.on('chainChanged', () => {
+          this.ngZone.run(() => {
+            this.router.navigate(['login'])
+          })
         });
 
         const address = await ethereum.request({ method: 'eth_requestAccounts' })

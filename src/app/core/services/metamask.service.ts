@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { from } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import detectEthereumProvider  from "@metamask/detect-provider";
 import { ethers } from 'ethers';
 import { __values } from 'tslib';
+import { NgIfContext } from '@angular/common';
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
 
 const WEB_SRVR_URL = 'http://localhost:3003'
 const API_URL = "https://eth-rinkeby.alchemyapi.io/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
 const DEPLOY_ADDRESS = "0x20e73B4023bBcaBeA040aC529b14A3f807D3d912";
-
-//Deployed address for first Rinkeby contract
-//const DEPLOY_ADDRESS = "0x35170D220AF5E193DC56fAa42DBCd486595525C6";
-
-//Deployed Address for Hardhat local node
-//const DEPLOY_ADDRESS = "0xf940bC86Dd844FB43BE8F5D8E00AfB87675876C1";
 
 interface NonceResponse {
   nonce: string;
@@ -52,16 +47,12 @@ export class MetamaskService {
         }
 
         ethereum = provider;
-
-        ethereum.on('accountsChanged', function() {
+        
+        ethereum.on('accountsChanged', () => {
           console.log("ACCOUNT CHANGE")
+          throw ('Please Login Again')
         });
-        
-        ethereum.on('chainChanged', function() {
-          console.log("NETWORK CHANGE")
-        });
-        
-        //return await ethereum.request({ method: 'eth_requestAccounts' });
+
         const address = await ethereum.request({ method: 'eth_requestAccounts' })
         await this.requestNetworkChange(ethereum)
 
@@ -86,7 +77,8 @@ export class MetamaskService {
             `0x${this.toHex(response.nonce)}`,
             ethereum.selectedAddress,
           ],
-        })
+        }
+        )
     ),
 
     // 4 - Send signature to server for verification
@@ -129,6 +121,7 @@ private toHex(stringToConvert: string) {
   *   @dev:   Returns the wallet data (network and account)
   */
   public async getWalletData() {
+    
     const data: string[] = [];
     const provider: any = await detectEthereumProvider()
 
@@ -142,7 +135,6 @@ private toHex(stringToConvert: string) {
 
     return data;
   }
-
 
 
   /*

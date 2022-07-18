@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     private _router: Router) { }
 
   async ngOnInit(): Promise<void> {
-    const data = await this.metamaskService.getWalletData();
+    const data = await this.metamaskService.getWalletData()
     
     const networks = new Map<string, string>([
       ["0x1", "Mainnet"],
@@ -30,14 +30,12 @@ export class HomeComponent implements OnInit {
     this.account = data[1];
   }
 
-  async connect() {
-    this.metamaskService.metamaskLogin().pipe().subscribe( async (verified: any) => {
-        
-      if(!verified) {
-        this._router.navigate(['login'])
-      }
+  async logout() {
+    this._router.navigate(['login'])
+  }
 
-    })
+  viewData(){
+    //this._router.navigate(['login'])
   }
 
   visitMarketplace() {

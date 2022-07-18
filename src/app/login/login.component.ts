@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 import { MetamaskService } from '../core/services/metamask.service';
 
 @Component({
@@ -18,9 +19,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  async metamaskHelper() {
-    this.metamaskService.metamaskLogin().pipe().subscribe( async (isAuthenticated: boolean) => { if(isAuthenticated) { this._router.navigate(['home']) }})
-    //this._router.navigate(['home'])
+  async login() {
+    this._router.navigate(['home'])
   }
 
 }

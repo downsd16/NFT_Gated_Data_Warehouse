@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
+import detectEthereumProvider from '@metamask/detect-provider';
+import { Observable, of, Subject, Subscription } from 'rxjs';
+import { MetamaskService } from './metamask.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   
-  isLoggedIn = false
+  isVerified = false
   
-  constructor() { }
+  constructor(
+    private metamaskService: MetamaskService
+  ) {}
 
   isAuthenticated() {
-    return this.isLoggedIn
+    this.metamaskService.metamaskLogin().pipe()
+
+    return this.metamaskService.metamaskLogin()
   }
 }

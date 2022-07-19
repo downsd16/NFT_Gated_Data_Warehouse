@@ -28,7 +28,7 @@ export class AuthGuard implements CanActivate {
         }
       }),
       catchError(() => {
-        window.alert("MetaMask Error")
+        window.alert("MetaMask Error Please Try Again")
         return of(false)
       }));
 

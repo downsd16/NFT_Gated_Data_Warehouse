@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { from, of } from 'rxjs';
-import {  finalize, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import detectEthereumProvider  from "@metamask/detect-provider";
 import { ethers } from 'ethers';
 import { __values } from 'tslib';

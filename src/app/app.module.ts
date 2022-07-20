@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AdminConsoleComponent } from './admin-console/admin-console.component';
+import { LineGraphComponent } from './line-graph/line-graph.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AdminConsoleComponent } from './admin-console/admin-console.component';
     ButtonComponent,
     PageNotFoundComponent,
     LoginComponent,
-    AdminConsoleComponent
+    AdminConsoleComponent,
+    LineGraphComponent
   ],
   imports: [
     BrowserModule,

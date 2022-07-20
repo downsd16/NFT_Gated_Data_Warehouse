@@ -32,7 +32,11 @@ export class LineGraphComponent implements OnDestroy {
       type: "line",
       xValueType: "dateTime",
       yValueType: "usd",
-      dataPoints: this.dataPoints
+      dataPoints: this.dataPoints,
+      lineThickness: 2,
+      lineColor: "#005288",
+      markerColor: "#005288",
+      markerSize: 3
     }]
   }
  
@@ -63,7 +67,7 @@ export class LineGraphComponent implements OnDestroy {
   }
 
   randomizer() {
-    let rand = Math.random()*100
+    let rand = Math.random()*10
     return(Math.random() >= 0.5 ? -rand : rand)
   }
 }

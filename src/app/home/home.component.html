@@ -34,7 +34,7 @@
         </mat-card-content>
   
         <mat-card-actions>
-          <app-button (click)="connect()" color="orange" text="Connect">
+          <app-button (click)="logout()" color="orange" text="Logout">
           </app-button>
         </mat-card-actions>
       </mat-card>
@@ -56,12 +56,16 @@
           class="buttonContainer"
           >
           <div class="cardMain" fxFlex="50%">
-            <app-button-fab (click)="connect()" color="orange" icon="timeline" style="margin: 10px"></app-button-fab>
-            <p>Data Access</p>
+            <app-button-fab (click)="viewData()" color="orange" icon="timeline" style="margin: 10px"></app-button-fab>
+            <p>Data</p>
           </div>
           <div class="cardMain" fxFlex="50%">
-            <app-button-fab (click)="connect()" color="orange" icon="store" style="margin: 10px"></app-button-fab>
-            <p>Marketplace</p>
+            <app-button-fab (click)="visitMarketplace()" color="orange" icon="store" style="margin: 10px"></app-button-fab>
+            <p>Market</p>
+          </div>
+          <div class="cardMain" fxFlex="50%">
+            <app-button-fab (click)="adminConsole()" color="orange" icon="developer_board" style="margin: 10px"></app-button-fab>
+            <p>Admin</p>
           </div>
           </div>
       </mat-card>

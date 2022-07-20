@@ -10,7 +10,8 @@ export class ButtonComponent implements OnInit {
   @Input() text!: string;
   @Input() color!: string;
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void { }
 

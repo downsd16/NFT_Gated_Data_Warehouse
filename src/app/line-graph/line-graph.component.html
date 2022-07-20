@@ -1,0 +1,15 @@
+<div class="homeHeaderContainer">
+    <mat-card class="cardMain">
+      <mat-card-header class="cardHeader">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jabil_Circuit_Logo.svg"
+          style="max-width: 60%; height: auto; width: auto; margin-bottom: 5%"
+        />
+        <h1>Data Warehouse Home</h1>
+      </mat-card-header>
+    </mat-card>
+  </div>
+
+<div class="homeBodyContainer">
+    <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height: '250px'}" (chartInstance)="getChartInstance($event)"></canvasjs-chart>    
+</div>

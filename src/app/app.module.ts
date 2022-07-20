@@ -14,7 +14,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { AuthGuard } from './core/guards/auth.guard';
+import { AdminConsoleComponent } from './admin-console/admin-console.component';
+import { LineGraphComponent } from './line-graph/line-graph.component';
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
   declarations: [
@@ -24,7 +28,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ButtonFabComponent,
     ButtonComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    AdminConsoleComponent,
+    LineGraphComponent,
+    CanvasJSChart
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     MatIconModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

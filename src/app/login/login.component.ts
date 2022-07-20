@@ -9,11 +9,8 @@ import { MetamaskService } from '../core/services/metamask.service';
 })
 export class LoginComponent implements OnInit {
 
-  @Input() account!: string
-
   constructor(
-    private _router: Router,
-    private metamaskService: MetamaskService
+    private _router: Router
   ) { }
 
   ngOnInit(): void { }
@@ -22,4 +19,7 @@ export class LoginComponent implements OnInit {
     this._router.navigate(['home'])
   }
 
+  learn() {
+    
+  }
 }

@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { from } from 'rxjs';
+import { from, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import detectEthereumProvider  from "@metamask/detect-provider";
 import { ethers } from 'ethers';
 import { __values } from 'tslib';
+import { Router } from '@angular/router';
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
 
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const url = 'http://localhost:3003'
-const testSecret = "6Xbzysfcky3R73B7KddC"           //Move to more secure location
-const DEPLOY_ADDRESS = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
-//const AccessController = JSON.parse(ControllerABI);
+const WEB_SRVR_URL = 'http://localhost:3003'
+const API_URL = "https://eth-rinkeby.alchemyapi.io/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
+const DEPLOY_ADDRESS = "0x20e73B4023bBcaBeA040aC529b14A3f807D3d912";
+const TEST1_PUB_KEY = "0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E";
 
 
 interface NonceResponse {
@@ -29,8 +28,17 @@ interface VerifyResponse {
 
 export class MetamaskService {
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private ngZone: NgZone) {}
 
+  /*
+  *   MetaMask Authentication Function
+  *
+  *   @dev:   Connects with the backend via http to sign and 
+  *           verify wallet using a random nonce 
+  */
   metamaskLogin() {
 
     let ethereum: any;
@@ -44,16 +52,19 @@ export class MetamaskService {
         }
 
         ethereum = provider;
+        
+        ethereum.on('accountsChanged', () => {
+          this.ngZone.run(() => {
+            this.router.navigate(['login'])
+          })
+        });
 
-        ethereum.on('accountsChanged', function() {
-          console.log("ACCOUNT CHANGE")
+        ethereum.on('chainChanged', () => {
+          this.ngZone.run(() => {
+            this.router.navigate(['login'])
+          })
         });
-        
-        ethereum.on('chainChanged', function() {
-          console.log("NETWORK CHANGE")
-        });
-        
-        //return await ethereum.request({ method: 'eth_requestAccounts' });
+
         const address = await ethereum.request({ method: 'eth_requestAccounts' })
         await this.requestNetworkChange(ethereum)
 
@@ -78,18 +89,19 @@ export class MetamaskService {
             `0x${this.toHex(response.nonce)}`,
             ethereum.selectedAddress,
           ],
-        })
+        }
+        )
     ),
 
     // 4 - Send signature to server for verification
     switchMap((sig) => 
-        this.http.post(
-          `${ url }/verify`,
+        this.http.post<VerifyResponse>(
+          `${ WEB_SRVR_URL }/verify`,
           { address: ethereum.selectedAddress, signature: sig }
         )
       ),
 
-    // 5 - Return the Wallet Data if authenticated
+    // 5 - Return true if authenticated through both methods
     switchMap(
       async (response) => {
         let hasToken = await this.checkIdentification(ethereum.selectedAddress)
@@ -128,6 +140,7 @@ private toHex(stringToConvert: string) {
   *   @dev:   Returns the wallet data (network and account)
   */
   public async getWalletData() {
+    
     const data: string[] = [];
     const provider: any = await detectEthereumProvider()
 
@@ -137,11 +150,10 @@ private toHex(stringToConvert: string) {
     const address = addresses[0]
     
     data.push(networkId)
-    data.push("0x..." + (address).substring(address.length - 4))
+    data.push(address)
 
     return data;
   }
-
 
 
   /*
@@ -152,10 +164,8 @@ private toHex(stringToConvert: string) {
   */
   public async checkIdentification(address: any) {
     let value = false
-    
-    //const provider = ethers.getDefaultProvider("http://localhost:8545")
-    const provider = new ethers.providers.JsonRpcProvider("http://localhost:8545")
-    const signer = provider.getSigner(address)
+    const provider = new ethers.providers.JsonRpcProvider(API_URL)
+    const signer = new ethers.VoidSigner(address, provider)
 
     const contractInstanceForUser = new ethers.Contract(
       DEPLOY_ADDRESS,
@@ -167,6 +177,57 @@ private toHex(stringToConvert: string) {
 
     return value
   }
+
+
+
+/*
+  *   Pause Contract Function
+  *
+  *   @dev:   Calls 'pause' on chain to test contract pausing            
+  */
+public async pauseContract() {
+
+  const provider = new ethers.providers.JsonRpcProvider(API_URL)
+  const signer = new ethers.Wallet(TEST1_PUB_KEY, provider)
+
+  const contractInstanceForUser = new ethers.Contract(
+    DEPLOY_ADDRESS,
+    ControllerABI.abi,
+    signer
+  )
+
+    //const transactionPause = contractInstanceForUser['pause']()
+    await contractInstanceForUser['pause']()
+    .then(() => {
+        return true 
+      })
+}
+
+
+
+/*
+  *   Burn NFT Function
+  *
+  *   @dev:   Calls 'checkId' on chain to authenticate 
+  *           currently-connected user
+  */
+public async burnNFT() {
+
+  const provider = new ethers.providers.JsonRpcProvider(API_URL)
+  const signer = new ethers.Wallet(TEST1_PUB_KEY, provider)
+
+  const contractInstanceForUser = new ethers.Contract(
+    DEPLOY_ADDRESS,
+    ControllerABI.abi,
+    signer
+  )
+
+    //const transactionPause = contractInstanceForUser['pause']()
+    const transactionPause = await contractInstanceForUser['pause']()
+    .then(() => {
+        return true 
+      })
+}
 
 
 
@@ -184,7 +245,7 @@ private toHex(stringToConvert: string) {
       await provider.request({
         method: 'wallet_switchEthereumChain',
         params: [{
-          chainId: '0x7A69'                              
+          chainId: '0x4'                              
         }],
       });
     } catch (error: any) {

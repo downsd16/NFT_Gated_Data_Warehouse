@@ -36,7 +36,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 nvm install node
 npm install --save-dev ts-node typescript
 ~~~
-3. Hardhat:
+3. Install packages
+~~~
+npm install
+~~~
+  
+Configutre Hardhat:
 ~~~
 mkdir DESIRED_REPO_NAME
 cd DESIRED_REPO_NAME
@@ -44,26 +49,8 @@ npm init --yes
 npm install --save-dev hardhat
 ~~~
 
-
-Testing/Hardhat Dependencies
-~~~
-npm install --save-dev sinon
-npm install --save-dev chai
-npm install --save-dev sinon-chai
-npm install --save-dev chai @types/node @types/mocha @types/chai
-npm install --save-dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethereum-waffle chai
-npm install --save dotenv
-~~~
-
----
-
-#Configure Alchemy:
-
-
----
-
-#Create Environment Variables: _(Ubuntu Server LTS)_
-Create a new .env file in the project directory<br>
+Create Environment Variables: _(Ubuntu Server LTS)_<br>
+Create a new .env file in the project directory
 ~~~
 touch .env
 sudo nano ~/PROJECT_ROOT_DIRECTORY/.env
@@ -72,7 +59,7 @@ vim ~/PROJECT_ROOT_DIRECTORY/.env
 ~~~
 We then want to add a couple enviroment variables
 ~~~
-ETH_PRIVATE_KEY =       // The private key of the account you intend to use
+ETH_PRIVATE_KEY =   // The private key of the account you intend to use
 API_URL =           // URL output from the Alchemy configuration 
 TEST_NET_NAME =     //The plaintext name of the testnet you are using (must match Alchemy config)
 ETH_PUBLIC_KEY      //Public address to send all NFT's minted via Hardhat task 
@@ -80,7 +67,7 @@ ETH_PUBLIC_KEY      //Public address to send all NFT's minted via Hardhat task
 
 ---
 
-#Compile Contracts: _(Ubuntu Server LTS)_
+Compile Contracts: _(Ubuntu Server LTS)_
 ~~~
 npx hardhat compile
 ~~~

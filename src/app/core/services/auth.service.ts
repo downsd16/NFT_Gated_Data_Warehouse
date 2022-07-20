@@ -3,11 +3,11 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import { Observable, of, Subject, Subscription } from 'rxjs';
 import { MetamaskService } from './metamask.service';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
   isVerified = false
   
   constructor(
@@ -20,3 +20,4 @@ export class AuthService {
     return this.metamaskService.metamaskLogin()
   }
 }
+

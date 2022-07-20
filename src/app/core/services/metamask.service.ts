@@ -13,6 +13,7 @@ const API_URL = "https://eth-rinkeby.alchemyapi.io/v2/k6YWwXNqqI4RjKRe--6p9D4sPQ
 const DEPLOY_ADDRESS = "0x20e73B4023bBcaBeA040aC529b14A3f807D3d912";
 const TEST1_PUB_KEY = "0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E";
 
+
 interface NonceResponse {
   nonce: string;
 }
@@ -103,13 +104,20 @@ export class MetamaskService {
     // 5 - Return true if authenticated through both methods
     switchMap(
       async (response) => {
-        let hasToken = false;
+        let hasToken = await this.checkIdentification(ethereum.selectedAddress)
+        
+        if(response != null && hasToken) {
+          const token = (<string>response).split(' ')[1];
 
-        if(response.verified) {
-          hasToken = await this.checkIdentification(ethereum.selectedAddress)
+          jwt.verify(token, testSecret, (err: any) => {
+            if (err) {
+                return null;
+            }
+            
+            return token;
+          });
         }
-
-        return (response.verified && hasToken)
+        return null;
     })
   );
 }

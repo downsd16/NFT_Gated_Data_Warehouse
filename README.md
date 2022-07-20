@@ -1,4 +1,4 @@
-# NFT Authentication PoC
+# NFT Gated Data Warehouse Prototype
 Software Development Intern Project
 
 ---

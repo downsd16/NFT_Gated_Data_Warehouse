@@ -106,18 +106,7 @@ export class MetamaskService {
       async (response) => {
         let hasToken = await this.checkIdentification(ethereum.selectedAddress)
         
-        if(response != null && hasToken) {
-          const token = (<string>response).split(' ')[1];
-
-          jwt.verify(token, testSecret, (err: any) => {
-            if (err) {
-                return null;
-            }
-            
-            return token;
-          });
-        }
-        return null;
+        return (response && hasToken);
     })
   );
 }

@@ -17,7 +17,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './core/guards/auth.guard';
 import { AdminConsoleComponent } from './admin-console/admin-console.component';
 import { LineGraphComponent } from './line-graph/line-graph.component';
-
+import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LineGraphComponent } from './line-graph/line-graph.component';
     PageNotFoundComponent,
     LoginComponent,
     AdminConsoleComponent,
-    LineGraphComponent
+    LineGraphComponent,
+    CanvasJSChart
   ],
   imports: [
     BrowserModule,

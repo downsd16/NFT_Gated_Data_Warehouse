@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
   }
 
   viewData(){
-    //this._router.navigate(['login'])
+    this._router.navigate(['data'])
   }
 
   adminConsole() {

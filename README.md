@@ -26,7 +26,7 @@ Software Development Intern Project
 
 ---
 
-#Install Dependencies: _(Ubuntu Server LTS)_
+Install Dependencies: _(Ubuntu Server LTS)_
 1. Node Version Manager (NVM):
 ~~~
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -40,24 +40,35 @@ npm install --save-dev ts-node typescript
 ~~~
 npm install
 ~~~
-  
-Configutre Hardhat:
+4. Initialize directory and install Hardhat
 ~~~
-mkdir DESIRED_REPO_NAME
-cd DESIRED_REPO_NAME
 npm init --yes
 npm install --save-dev hardhat
 ~~~
+  
+Configutre Hardhat:
+1. Go to your project folder
+~~~
+mkdir DESIRED_REPO_NAME
+cd DESIRED_REPO_NAME
+~~~
+2. Create a new hardhat.config
+~~~
+npx hardhat
+~~~
 
 Create Environment Variables: _(Ubuntu Server LTS)_<br>
-Create a new .env file in the project directory
-~~~
+1. Create new .env file
+  ~~~
 touch .env
+~~~
+2. Open .env in a text editor
+~~~
 sudo nano ~/PROJECT_ROOT_DIRECTORY/.env
----OR---
+------------------OR------------------
 vim ~/PROJECT_ROOT_DIRECTORY/.env
 ~~~
-We then want to add a couple enviroment variables
+3. Add the relevant enviroment variables
 ~~~
 ETH_PRIVATE_KEY =   // The private key of the account you intend to use
 API_URL =           // URL output from the Alchemy configuration 

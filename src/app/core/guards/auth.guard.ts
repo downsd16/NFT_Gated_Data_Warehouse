@@ -17,8 +17,6 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
 
-      return of(true)
-      /*
       return this.metamaskService.metamaskLogin().pipe(
       map(isAuthenticated => {
         if(isAuthenticated) 
@@ -33,7 +31,6 @@ export class AuthGuard implements CanActivate {
         window.alert("MetaMask Error Please Try Again")
         return of(false)
       }));
-      */
   }
   
 }

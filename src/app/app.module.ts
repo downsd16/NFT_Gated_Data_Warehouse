@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthGuard } from './core/guards/auth.guard';
+import { AdminConsoleComponent } from './admin-console/admin-console.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AuthGuard } from './core/guards/auth.guard';
     ButtonFabComponent,
     ButtonComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    AdminConsoleComponent
   ],
   imports: [
     BrowserModule,

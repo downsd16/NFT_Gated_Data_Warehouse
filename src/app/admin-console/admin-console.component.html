@@ -1,0 +1,46 @@
+<div class="loginContainer">
+    <mat-card class="cardMain">
+        <mat-card-header class="cardHeader">
+            <img mat-card-image 
+                src="https://images.ctfassets.net/9sy2a0egs6zh/2XUXAYxxFFVjPlZABUoiLg/d0ff82237d3e5d9bd1097a98e0754453/MMI-icon.svg"
+                style="width:50px; height: 50px; margin: 0px;">
+            <mat-card-title style="margin-bottom: 0px;">
+                <h1>Admin Console</h1>
+            </mat-card-title>    
+        </mat-card-header>   
+        
+        <mat-card-actions class="cardActions">
+            <app-button
+                (click) = "pause()"
+                color="orange"
+                text="Pause"
+                >
+            </app-button>
+            <app-button
+                (click) = "resume()"
+                color="orange"
+                text="Resume"
+                >
+            </app-button>
+            <app-button
+                (click) = "transfer()"
+                color="orange"
+                text="Transfer"
+                >
+            </app-button>
+            <app-button
+                (click) = "burn()"
+                color="orange"
+                text="Burn NFT"
+                >
+            </app-button>
+            <app-button
+                (click) = "mint()"
+                color="orange"
+                text="Mint NFT"
+                >
+            </app-button>
+        </mat-card-actions>
+    
+    </mat-card>
+    </div>

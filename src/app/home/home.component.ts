@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
       ["0x5", "Goerli"]
     ])
     this.network = networks.get(data[0])!;
-    this.account = data[1];
+    this.account = "0x..." + (data[1]).substring(data[1].length - 4)
   }
 
   async logout() {
@@ -41,6 +41,10 @@ export class HomeComponent implements OnInit {
 
   viewData(){
     //this._router.navigate(['login'])
+  }
+
+  adminConsole() {
+    this._router.navigate(['admin'])
   }
 
   visitMarketplace() {

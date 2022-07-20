@@ -11,6 +11,7 @@ const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/co
 const WEB_SRVR_URL = 'http://localhost:3003'
 const API_URL = "https://eth-rinkeby.alchemyapi.io/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
 const DEPLOY_ADDRESS = "0x20e73B4023bBcaBeA040aC529b14A3f807D3d912";
+const TEST1_PUB_KEY = "0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E";
 
 interface NonceResponse {
   nonce: string;
@@ -141,7 +142,7 @@ private toHex(stringToConvert: string) {
     const address = addresses[0]
     
     data.push(networkId)
-    data.push("0x..." + (address).substring(address.length - 4))
+    data.push(address)
 
     return data;
   }
@@ -168,6 +169,57 @@ private toHex(stringToConvert: string) {
 
     return value
   }
+
+
+
+/*
+  *   Pause Contract Function
+  *
+  *   @dev:   Calls 'pause' on chain to test contract pausing            
+  */
+public async pauseContract() {
+
+  const provider = new ethers.providers.JsonRpcProvider(API_URL)
+  const signer = new ethers.Wallet(TEST1_PUB_KEY, provider)
+
+  const contractInstanceForUser = new ethers.Contract(
+    DEPLOY_ADDRESS,
+    ControllerABI.abi,
+    signer
+  )
+
+    //const transactionPause = contractInstanceForUser['pause']()
+    await contractInstanceForUser['pause']()
+    .then(() => {
+        return true 
+      })
+}
+
+
+
+/*
+  *   Burn NFT Function
+  *
+  *   @dev:   Calls 'checkId' on chain to authenticate 
+  *           currently-connected user
+  */
+public async burnNFT() {
+
+  const provider = new ethers.providers.JsonRpcProvider(API_URL)
+  const signer = new ethers.Wallet(TEST1_PUB_KEY, provider)
+
+  const contractInstanceForUser = new ethers.Contract(
+    DEPLOY_ADDRESS,
+    ControllerABI.abi,
+    signer
+  )
+
+    //const transactionPause = contractInstanceForUser['pause']()
+    const transactionPause = await contractInstanceForUser['pause']()
+    .then(() => {
+        return true 
+      })
+}
 
 
 

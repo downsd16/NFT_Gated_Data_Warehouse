@@ -11,5 +11,5 @@
   </div>
 
 <div class="homeBodyContainer">
-    <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'250px'}"></canvasjs-chart>    
+    <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height: '250px'}" (chartInstance)="getChartInstance($event)"></canvasjs-chart>    
 </div>

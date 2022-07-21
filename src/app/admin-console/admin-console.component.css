@@ -1,9 +1,22 @@
 /* Mat-Card Classes */
+
 .cardMain {
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color:white;
+    padding: 5px 10px 5px 10px;
+    max-height: 80%;
+}
+
+.buttonContainer {
+    max-height: 80%;
+}
+
+.cardTest {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .cardHeader {
@@ -13,10 +26,9 @@
     margin-bottom: 0px;
 }
 
-.cardActions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+p {
+    color: #005288;
+    font-weight: bold;
 }
 
 h1 {
@@ -24,16 +36,39 @@ h1 {
     color: #005288;
 }
 
+
+
 /* Container Classes */
-.loginContainer {
-    display: inline-block;
-    max-width: auto;
+
+.homeHeaderContainer {
+    max-width: 85%;
     margin: 30px auto;
     overflow: auto;
     min-height: auto;
-    padding: 20px;
+    padding: 0px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
   }
 
-.loginContent {
+.homeBodyContainer {
+    overflow: hidden;
+    max-width: 85%;
+    margin: 30px auto;
+    overflow: auto;
+    min-height: auto;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.homeContent {
     margin: 0px;
 }
+
+div {
+    overflow:hidden;
+}
+
+.bodyContent {
+    padding: 1px;
+}
+

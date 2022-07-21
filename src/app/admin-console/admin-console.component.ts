@@ -34,4 +34,23 @@ export class AdminConsoleComponent implements OnInit {
   async transfer() {
     //this.adminService
   }
+
+  /*
+  CONTRACT STATUS:
+  https://api.etherscan.io/api
+   ?module=contract
+   &action=getabi
+   &address=0x20e73B4023bBcaBeA040aC529b14A3f807D3d912
+   &apikey=U9XTEBB23AC7DTFHZ6UUZDGEP65X5IWRHX
+
+  TRANSACTION HISTORY:
+   https://api-rinkeby.etherscan.io/api
+   ?module=account
+   &action=txlist
+   &address=0x20e73B4023bBcaBeA040aC529b14A3f807D3d912
+   &startblock=0
+   &endblock=99999999
+   &sort=asc
+   &apikey=U9XTEBB23AC7DTFHZ6UUZDGEP65X5IWRHX
+  */
 }

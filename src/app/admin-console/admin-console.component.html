@@ -1,40 +1,38 @@
-<div class="loginContainer">
+<div class="homeHeaderContainer">
     <mat-card class="cardMain">
         <mat-card-header class="cardHeader">
             <img mat-card-image 
                 src="https://images.ctfassets.net/9sy2a0egs6zh/2XUXAYxxFFVjPlZABUoiLg/d0ff82237d3e5d9bd1097a98e0754453/MMI-icon.svg"
                 style="width:50px; height: 50px; margin: 0px;">
             <mat-card-title style="margin-bottom: 0px;">
-                <h1>Admin Console</h1>
+                <h1>Admin</h1>
             </mat-card-title>    
         </mat-card-header>   
-        
-        <mat-card-actions class="cardActions">
-            <app-button
-                (click) = "pause()"
-                color="orange"
-                text="Pause"
-                >
-            </app-button>
-            <app-button
-                (click) = "resume()"
-                color="orange"
-                text="Resume"
-                >
-            </app-button>
-            <app-button
-                (click) = "transfer()"
-                color="orange"
-                text="Transfer"
-                >
-            </app-button>
-            <app-button
-                (click) = "burn()"
-                color="orange"
-                text="Burn NFT"
-                >
-            </app-button>
-        </mat-card-actions>
-    
     </mat-card>
-    </div>
+</div>
+        
+<div class="homeBodyContainer">
+    <mat-card class="cardMain">
+        <div
+          fxLayout="row"
+          fxLayout.xs="column"
+          fxLayoutAlign="center"
+          fxLayoutGap="10px"
+          fxFlexFill
+          class="buttonContainer"
+          >
+            <div class="cardMain" fxFlex="100%">
+                <app-button-fab (click)="pause()" color="orange" icon="pause" style="margin: 5px"></app-button-fab>
+            </div>
+            <div class="cardMain" fxFlex="50%">
+                <app-button-fab (click)="resume()" color="orange" icon="play_arrow" style="margin: 5px"></app-button-fab>
+            </div>
+            <div class="cardMain" fxFlex="50%">
+                <app-button-fab (click)="transfer()" color="orange" icon="swap_horiz" style="margin: 5px"></app-button-fab>
+            </div>
+            <div class="cardMain" fxFlex="50%">
+                <app-button-fab (click)="burn()" color="orange" icon="clear" style="margin: 5px"></app-button-fab>
+            </div>
+        </div>
+    </mat-card>
+</div>

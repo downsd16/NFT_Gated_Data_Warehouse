@@ -111,7 +111,7 @@ export class MetamaskService {
           if(i && response) { hasToken = true }
         });
 
-        return false;
+        return hasToken;
     })
   );
 }

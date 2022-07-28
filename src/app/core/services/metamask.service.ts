@@ -104,14 +104,14 @@ export class MetamaskService {
     // 5 - Return true if authenticated through both methods
     switchMap(
       async (response) => {
+        let hasTokensReturn: boolean[] = new Array(4).fill(false);
         let hasTokens = await this.checkIdentification(ethereum.selectedAddress)
-        let hasToken = false
 
         hasTokens.forEach((i: boolean) => {
-          if(i && response) { hasToken = true }
+          if(i && response) { hasTokensReturn = hasTokens }
         });
 
-        return hasToken;
+        return hasTokens;
     })
   );
 }

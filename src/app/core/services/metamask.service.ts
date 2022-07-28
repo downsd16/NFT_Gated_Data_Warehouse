@@ -10,7 +10,7 @@ const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/co
 
 const WEB_SRVR_URL = 'http://localhost:3003'
 const API_URL = "https://eth-rinkeby.alchemyapi.io/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
-const DEPLOY_ADDRESS = "0x20e73B4023bBcaBeA040aC529b14A3f807D3d912";
+const DEPLOY_ADDRESS = "0x25845aBC024b6B03bBbffa6B8F8f2aa3a5Da61E3";
 const TEST1_PUB_KEY = "0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E";
 
 
@@ -104,9 +104,14 @@ export class MetamaskService {
     // 5 - Return true if authenticated through both methods
     switchMap(
       async (response) => {
-        let hasToken = await this.checkIdentification(ethereum.selectedAddress)
-        
-        return (response && hasToken);
+        let hasTokens = await this.checkIdentification(ethereum.selectedAddress)
+        let hasToken = false
+
+        hasTokens.forEach((i: boolean) => {
+          if(i && response) { hasToken = true }
+        });
+
+        return false;
     })
   );
 }
@@ -152,7 +157,6 @@ private toHex(stringToConvert: string) {
   *           currently-connected user
   */
   public async checkIdentification(address: any) {
-    let value = false
     const provider = new ethers.providers.JsonRpcProvider(API_URL)
     const signer = new ethers.VoidSigner(address, provider)
 
@@ -161,10 +165,7 @@ private toHex(stringToConvert: string) {
       ControllerABI.abi,
       signer
     )
-      value = await contractInstanceForUser['checkId'](1)
-      console.log(value)
-
-    return value
+    return await contractInstanceForUser['checkId']()
   }
 
 

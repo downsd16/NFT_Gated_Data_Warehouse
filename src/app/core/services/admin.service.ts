@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import detectEthereumProvider from '@metamask/detect-provider';
 
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
-const DEPLOY_ADDRESS = '0x20e73B4023bBcaBeA040aC529b14A3f807D3d912';
+const DEPLOY_ADDRESS = '0x25845aBC024b6B03bBbffa6B8F8f2aa3a5Da61E3';
 const TEST1_PUB_KEY = '0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E';
 const TEST2_PUB_KEY = '0x61A28d63038eB03CD242BA659201bDe0DCB83C70';
 

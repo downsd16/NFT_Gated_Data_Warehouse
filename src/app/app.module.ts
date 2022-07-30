@@ -18,6 +18,9 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { AdminConsoleComponent } from './admin-console/admin-console.component';
 import { LineGraphComponent } from './line-graph/line-graph.component';
 import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
+import { DataPageComponent } from './data-page/data-page.component';
+import { MenuComponent } from './menu/menu.component';
+import { MatMenuModule } from '@angular/material/menu';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -31,7 +34,9 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     LoginComponent,
     AdminConsoleComponent,
     LineGraphComponent,
-    CanvasJSChart
+    CanvasJSChart,
+    DataPageComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +46,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     MatButtonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatMenuModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

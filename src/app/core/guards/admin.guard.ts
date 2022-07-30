@@ -17,9 +17,8 @@ export class AdminGuard implements CanActivate {
   async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> {
-      //const data = await this.metamaskService.getWalletData()
-      //return (data[1] == TEST1_PUB_KEY)
-      return true
+      const data = await this.metamaskService.getWalletData()
+      return (data[1] == TEST1_PUB_KEY)
   }
   
 }

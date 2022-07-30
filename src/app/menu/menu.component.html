@@ -1,0 +1,7 @@
+<mat-menu #menu="matMenu">
+    <app-button mat-menu-item 
+        *ngFor="let value of listBool; let i = index"
+        [hidden]="value != true"
+        [attr.href]="listPages[i].route"
+        >{{ listPages[i].title }}</app-button>
+</mat-menu>

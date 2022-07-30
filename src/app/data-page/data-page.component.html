@@ -1,0 +1,68 @@
+<div class="homeHeaderContainer">
+    <mat-card class="cardMain">
+      <mat-card-header class="cardHeader">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jabil_Circuit_Logo.svg"
+          style="max-width: 60%; height: auto; width: auto; margin-bottom: 5%"
+        />
+        <h1>Data Warehouse Home</h1>
+      </mat-card-header>
+    </mat-card>
+  </div>
+
+<div class="homeBodyContainer">
+  <div
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  fxFlexFill
+  class="bodyContent"
+  >
+  <mat-card class="cardMain" fxFlex="25%">
+
+    <app-button [matMenuTriggerFor]="menu" color="orange" text="Change Item"></app-button>
+  
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item
+          *ngFor="let page of listPages"
+          (click)="update(page.route)"
+          [disabled]="!page.enable"
+          >{{ page.title }}
+      </button>
+    </mat-menu>
+  </mat-card>
+
+  <mat-card class="cardMain" fxFlex="75%">
+    <mat-card-header class="cardHeader">
+      <mat-card-title>
+        <h1>Data Summary:<br>{{ currPartName }}</h1>
+      </mat-card-title>
+    </mat-card-header>
+
+    <div
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxFlexFill
+
+      class="buttonContainer"
+      >
+        <div class="cardMain" fxFlex="50%">
+          <p>Twelve Month Volume </p>
+          <app-button-fab  color="orange" icon="calendar_today" style="margin: 10px"></app-button-fab>
+          <p>${{ currTwelveMonth }}</p>
+        </div>
+        <div class="cardMain" fxFlex="50%">
+          <app-button-fab  color="orange" icon="store" style="margin: 10px"></app-button-fab>
+          <p>Total Open PO Value {{ currTotalOpenPOValue }}</p>
+        </div>
+        <div class="cardMain" fxFlex="50%">
+          <app-button-fab  color="orange" icon="store" style="margin: 10px"></app-button-fab>
+          <p>Total Demanded Quantity {{ currTotalDemandQuantity }}</p>
+        </div>
+      </div>
+  </mat-card>
+</div>
+</div>

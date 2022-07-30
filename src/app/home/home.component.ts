@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private metamaskService: MetamaskService,
     private elementRef: ElementRef,
-    private _router: Router) { }
+    private _router: Router
+    ) { }
 
   ngOndestroy() {
     this.elementRef.nativeElement.remove();

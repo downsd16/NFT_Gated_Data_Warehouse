@@ -10,6 +10,16 @@
 }
 
 .buttonContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+    background-color:white;
+    margin: 0px;
+    max-height: 80%;
+}
+
+.dataContainer {
     max-height: 80%;
 }
 
@@ -44,21 +54,24 @@ h1 {
 
 .homeHeaderContainer {
     max-width: 85%;
-    margin: 30px auto;
+    max-width: 600px;
+    margin: 30px 30px 10px 30px;
     overflow: auto;
     min-height: auto;
-    padding: 30px;
+    padding-top: 30px;
     padding-bottom: 10px;
     margin-bottom: 0px;
   }
 
 .homeBodyContainer {
+    text-align: center;
     overflow: hidden;
     max-width: 85%;
-    margin: 30px auto;
+    max-width: 600px;
+    margin: 30px 30px 10px 30px;
     overflow: auto;
     min-height: auto;
-    padding: 30px;
+    padding-bottom: 30px;
     padding-top: 0px;
     margin-top: 0px;
 }
@@ -77,4 +90,8 @@ div {
 
 app-button-fab {
     align-items: center;
+}
+
+.menuItem {
+    max-width:200px;
 }

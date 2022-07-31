@@ -19,26 +19,23 @@
   fxFlexFill
   class="bodyContent"
   >
-  <mat-card class="cardMain" fxFlex="25%">
-
-    <app-button [matMenuTriggerFor]="menu" color="orange" text="Change Item"></app-button>
-  
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item
+  <mat-card class="buttonContainer" fxFlex="25%">
+    <app-button-fab  color="orange" icon="menu" style="margin-top: 20px; margin-bottom: 20px;" [matMenuTriggerFor]="menu"></app-button-fab>
+    <app-button-fab  color="orange" icon="home" style="margin-bottom: 20px" (click)="returnHome()"></app-button-fab>
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
+      <button mat-menu-item class="menuItem"
           *ngFor="let page of listPages"
           (click)="updatePart(page.route)"
           [disabled]="page.enable"
           >{{ page.title }}
       </button>
     </mat-menu>
-
-    <app-button color="orange" text="Return Home"></app-button>
   </mat-card>
 
   <mat-card class="cardMain" fxFlex="75%">
     <mat-card-header class="cardHeader">
       <mat-card-title>
-        <h1>Data Summary: {{ currPartName }}</h1>
+        <h1>Data Summary: {{ displayPartName }}</h1>
       </mat-card-title>
     </mat-card-header>
 
@@ -49,22 +46,22 @@
       fxLayoutGap="10px"
       fxFlexFill
 
-      class="buttonContainer"
+      class="dataContainer"
       >
         <div class="cardMain" fxFlex="50%">
-          <p>Twelve Month Volume </p>
+          <p>Twelve Month Volume</p>
           <app-button-fab  color="orange" icon="calendar_today" style="margin: 10px"></app-button-fab>
-          <p>{{ currTwelveMonth }}</p>
+          <p>{{ displayTwelveMonth }}</p>
         </div>
         <div class="cardMain" fxFlex="50%">
-          <p>Total Open Purchase Order</p>
+          <p>Total Open Purchase Orders</p>
           <app-button-fab  color="orange" icon="cached" style="margin: 10px"></app-button-fab>
-          <p>{{ currTotalOpenPOValue }}</p>
+          <p>{{ displayTotalOpenPOValue }}</p>
         </div>
         <div class="cardMain" fxFlex="50%">
           <p>Total Demanded Quantity</p>
           <app-button-fab  color="orange" icon="bar_chart" style="margin: 10px"></app-button-fab>
-          <p>{{ currTotalDemandQuantity }}</p>
+          <p>{{ displayTotalDemandQuantity }} units</p>
         </div>
       </div>
   </mat-card>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { StateService } from '../core/services/state.service';
 
 @Component({
@@ -9,65 +9,47 @@ import { StateService } from '../core/services/state.service';
 })
 export class DataPageComponent implements OnInit {
 
-  currentPartName: string = ""
   timeout:any = null
   stateArray: any
-  currPartName: string = ""
-  currTwelveMonth: string = ""
-  currTotalOpenPOValue: string = ""
-  currTotalDemandQuantity: string = ""
 
-  currencyFormatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0, 
-    maximumFractionDigits: 0,
-  });
+  displayPartName: string = ""
+  currTwelveMonth: number = 0
+  currTotalOpenPOValue: number = 0
+  currTotalDemandQuantity: number = 0
 
-  quantityFormatter = new Intl.NumberFormat('ja-JP', { 
-    style: 'currency', 
-    currency: 'JPY', 
-    currencyDisplay: "code" 
-  });
+  displayTwelveMonth: string = "$0"
+  displayTotalOpenPOValue: string = "$0"
+  displayTotalDemandQuantity: string = "0"
+
+  currencyFormatter: any
+  quantityFormatter: any
 
   listPages = [
     {
       enable: false, 
-      title: "Mining ASIC", 
-      twelveMonth: 920631220.16,
-      totalOpenPOValue: 771366186.81,
-      totalDemandQuantity: 758295367.23,
+      title: "Mining ASIC",
       route: "asic"
     },
     {
       enable: false, 
-      title: "Camera Module", 
-      twelveMonth: 28934368.12,
-      totalOpenPOValue: 24362876.18,
-      totalDemandQuantity: 8168954.22,
+      title: "Camera Module",
       route: "camera"
     },
     {
       enable: false, 
       title: "Microprocessor",
-      twelveMonth: 1283588281.94,
-      totalOpenPOValue: 3984582127.35,
-      totalDemandQuantity: 428649322.76, 
       route: "microp"
     },
     {
       enable: false, 
-      title: "Resistor", 
-      twelveMonth: 2362545835.21,
-      totalOpenPOValue: 539648955.33,
-      totalDemandQuantity: 132663849.48,
+      title: "Resistor",
       route: "resistor"
     }
   ]
 
   constructor(
     private stateService: StateService,
-    private route: ActivatedRoute
+    private _router: Router
     ) { }
 
   ngOnInit(): void {
@@ -78,35 +60,52 @@ export class DataPageComponent implements OnInit {
         });
       });
       console.log(this.listPages)
+
+      this.currencyFormatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0, 
+        maximumFractionDigits: 0,
+      });
+    
+      this.quantityFormatter = new Intl.NumberFormat('ja-JP', { 
+        style: 'currency', 
+        currency: 'JPY', 
+        currencyDisplay: "code" 
+      });
   }
 
-  public updateValues() {
+  updateValues() {
+    
+        //Update Values in Model
+        this.currTwelveMonth += Math.random()*100
+        this.currTotalOpenPOValue += Math.random()*50
+        this.currTotalDemandQuantity += Math.random()*10
+
+        //Update Display values
+        this.displayTwelveMonth = this.currencyFormatter.format(this.currTwelveMonth)
+        this.displayTotalOpenPOValue = this.currencyFormatter.format(this.currTotalOpenPOValue)
+        this.displayTotalDemandQuantity = this.quantityFormatter.format(this.currTotalDemandQuantity).replace("JPY", "").trim()
+  } 
+
+  updatePart(partName: string) {
+    
     this.listPages.forEach((item: any) => {
-      if(item.route === this.currentPartName) {
+      if(item.route == partName) {
+        this.displayPartName = item.title
 
         //Update Values in Model
-        item.twelveMonth += this.getRand(100)
-        item.totalOpenPOValue += this.getRand(9)
-        item.totalDemandQuantity += this.getRand(50)
-
-        //Updates Values in View
-        this.currPartName += item.title
-        this.currTwelveMonth = this.currencyFormatter.format(item.twelveMonth)
-        this.currTotalOpenPOValue = this.currencyFormatter.format(item.totalOpenPOValue)
-        this.currTotalDemandQuantity = this.quantityFormatter.format(item.totalDemandQuantity).replace("JPY", "").trim()
-        this.timeout = setTimeout(this.updateValues, 10000)
+        this.currTwelveMonth = 100000000 * Math.random()
+        this.currTotalOpenPOValue = 100000000 * Math.random()
+        this.currTotalDemandQuantity = 100000000 * Math.random()
       }
-    }) 
-  }
-
-  async updatePart(partName: string) {
-    this.currentPartName = partName
+    })
+    //this.timeout = setTimeout(this.updateValues, 1000)
     this.updateValues()
   }
 
-  getRand(value: number) {
-    let rand = Math.random()*value
-    if(value % 2 == 0) {return rand}
-    else { return (Math.random() >= 0.5) ? rand : -rand }
+  returnHome() {
+    this._router.navigate(['home'])
   }
+
 }

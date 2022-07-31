@@ -1,3 +1,4 @@
+<div class="wrapperMain">
 <div class="homeHeaderContainer">
     <mat-card class="cardMain">
       <mat-card-header class="cardHeader">
@@ -26,7 +27,7 @@
       <button mat-menu-item class="menuItem"
           *ngFor="let page of listPages"
           (click)="updatePart(page.route)"
-          [disabled]="page.enable"
+          [disabled]="!page.enable"
           >{{ page.title }}
       </button>
     </mat-menu>
@@ -65,5 +66,6 @@
         </div>
       </div>
   </mat-card>
+</div>
 </div>
 </div>

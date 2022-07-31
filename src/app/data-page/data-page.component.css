@@ -1,5 +1,11 @@
 /* Mat-Card Classes */
 
+.wrapperMain {
+    margin-top: 12.5%;
+    margin-bottom: 12.5%;
+    max-height: 100vh;
+}
+
 .cardMain {
     display: flex;
     align-items: center;
@@ -55,10 +61,9 @@ h1 {
 .homeHeaderContainer {
     max-width: 85%;
     max-width: 600px;
-    margin: 30px 30px 10px 30px;
+    margin: 0px 30px 10px 30px;
     overflow: auto;
     min-height: auto;
-    padding-top: 30px;
     padding-bottom: 10px;
     margin-bottom: 0px;
   }
@@ -71,7 +76,6 @@ h1 {
     margin: 30px 30px 10px 30px;
     overflow: auto;
     min-height: auto;
-    padding-bottom: 30px;
     padding-top: 0px;
     margin-top: 0px;
 }

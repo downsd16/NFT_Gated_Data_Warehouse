@@ -49,6 +49,10 @@ export class HomeComponent implements OnInit {
   }
 
   visitMarketplace() {
-    window.location.href = ('https://testnets.opensea.io/collection/nonfungibletrust-controller-v2');
+    window.location.href = ('https://testnets.opensea.io/collection/nonfungibletrust-controller-v3');
+  }
+
+  learning() {
+    window.location.href = ('https://medium.com/@jshanks21/nft-meaning-token-gating-ad83aef7cccd');
   }
 }

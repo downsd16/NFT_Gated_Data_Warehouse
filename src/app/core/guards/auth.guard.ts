@@ -26,6 +26,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
     ): Observable<boolean> {
       let hasToken = false;
+      console.log("--Validating Ticket--")
 
       // Call MetaMask Login from Service
       return this.metamaskService.metamaskLogin().pipe(
@@ -36,7 +37,7 @@ export class AuthGuard implements CanActivate {
 
           this.state = isAuthenticatedArray;
           this.stateService.state$.next(this.state);
-          console.log(isAuthenticatedArray)
+          console.log("Has Ticket: " + hasToken)
           return hasToken
       }),
       catchError((error) => {

@@ -59,7 +59,6 @@ export class DataPageComponent implements OnInit {
           this.listPages[index].enable = value
         });
       });
-      console.log(this.listPages)
 
       this.currencyFormatter = new Intl.NumberFormat('en-US', {
         style: 'currency',

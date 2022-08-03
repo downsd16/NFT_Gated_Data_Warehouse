@@ -1,11 +1,17 @@
 /* Mat-Card Classes */
 
+.wrapperMain {
+    margin-top: 12.5%;
+    margin-bottom: 12.5%;
+    max-height: 100vh;
+}
+
 .cardMain {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color:white;
-    padding: 5px 10px 5px 10px;
+    background-color:black;
+    margin: 0px;
     max-height: 80%;
 }
 
@@ -27,13 +33,13 @@
 }
 
 p {
-    color: #005288;
+    color: white;
     font-weight: bold;
 }
 
 h1 {
-    font-size: 20px;
-    color: #005288;
+    font-size: 16px;
+    color: white;
 }
 
 
@@ -42,18 +48,20 @@ h1 {
 
 .homeHeaderContainer {
     max-width: 85%;
-    margin: 30px auto;
+    max-width: 600px;
+    margin: 0px 30px 10px 30px;
     overflow: auto;
     min-height: auto;
-    padding: 0px;
     padding-bottom: 10px;
     margin-bottom: 0px;
   }
 
 .homeBodyContainer {
+    text-align: center;
     overflow: hidden;
     max-width: 85%;
-    margin: 30px auto;
+    max-width: 600px;
+    margin: 30px 30px 10px 30px;
     overflow: auto;
     min-height: auto;
     padding-top: 0px;
@@ -72,3 +80,30 @@ div {
     padding: 1px;
 }
 
+.formContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color:black;
+    margin-left: 10px;
+    max-height: 80%;
+}
+
+.formField {
+    min-width: 100px;
+    max-width: 150px;
+    font-size: 10px;
+    margin-bottom: 0px;
+}
+
+.innerFormDiv {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color:black;
+}
+
+
+mat-form-field.mat-form-field {
+    font-size: 12px;
+}

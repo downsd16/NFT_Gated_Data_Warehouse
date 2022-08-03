@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AdminService } from '../core/services/admin.service';
 
 @Component({
   selector: 'app-admin-console',
   templateUrl: './admin-console.component.html',
-  styleUrls: ['./admin-console.component.css']
+  styleUrls: ['./admin-console.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AdminConsoleComponent implements OnInit {
+
+  chosenAddress: string = ""
+  chosenTicket: number = -1
 
   constructor(
     private adminService: AdminService
@@ -23,16 +27,12 @@ export class AdminConsoleComponent implements OnInit {
       this.adminService.resumeContract()
   }
 
-  async burn() {
-    this.adminService.burnNFT()
-  }
-
-  async mint() {
-    this.adminService.mintNFT
-  }
-
   async transfer() {
     //this.adminService
+  }
+
+  async burn() {
+    this.adminService.burnNFT()
   }
 
   /*

@@ -25,7 +25,8 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
     ): Observable<boolean> {
-      let hasToken = false;
+
+      let hasToken = false;                                     
       console.log("--Validating Ticket--")
 
       // Call MetaMask Login from Service

@@ -1,3 +1,4 @@
+<div class="wrapperMain">
 <div class="homeHeaderContainer">
     <mat-card class="cardMain">
         <mat-card-header class="cardHeader">
@@ -12,27 +13,68 @@
 </div>
         
 <div class="homeBodyContainer">
-    <mat-card class="cardMain">
+
         <div
           fxLayout="row"
-          fxLayout.xs="column"
           fxLayoutAlign="center"
           fxLayoutGap="10px"
-          fxFlexFill
           class="buttonContainer"
+          fxFlexFill
           >
-            <div class="cardMain" fxFlex="100%">
-                <app-button-fab (click)="pause()" color="orange" icon="pause" style="margin: 5px"></app-button-fab>
-            </div>
-            <div class="cardMain" fxFlex="50%">
-                <app-button-fab (click)="resume()" color="orange" icon="play_arrow" style="margin: 5px"></app-button-fab>
-            </div>
-            <div class="cardMain" fxFlex="50%">
-                <app-button-fab (click)="transfer()" color="orange" icon="swap_horiz" style="margin: 5px"></app-button-fab>
-            </div>
-            <div class="cardMain" fxFlex="50%">
-                <app-button-fab (click)="burn()" color="orange" icon="clear" style="margin: 5px"></app-button-fab>
-            </div>
-        </div>
-    </mat-card>
+            <mat-card class="cardMain" fxFlex="25%">
+                <mat-card-header class="cardHeader">
+                    <mat-card-title>
+                      <h1>Pause</h1>
+                    </mat-card-title>
+                  </mat-card-header>
+
+                <app-button-fab (click)="pause()" color="white" icon="pause" style="margin: 8px"></app-button-fab>
+                <app-button-fab (click)="resume()" color="white" icon="play_arrow" style="margin: 8px"></app-button-fab>
+            </mat-card>
+        
+            <mat-card class="cardMain" fxFlex="75%">
+                
+                <mat-card-header class="cardHeader">
+                    <mat-card-title>
+                      <h1>State Change</h1>
+                    </mat-card-title>
+                  </mat-card-header>
+
+                <div class="formContainer">
+                    <app-button-fab (click)="transfer()" color="white" icon="swap_horiz" style="margin: 8px"></app-button-fab>
+                    
+                    <mat-form-field class="formField">
+                        <mat-label>To Address</mat-label>
+                        <input type="text" matInput required id="address" name="address" #address>
+                    </mat-form-field>
+
+                    <mat-form-field class="formField">
+                        <mat-label>Data Type</mat-label>
+                        <mat-select required>
+                          <mat-option value="0">ASIC Miner</mat-option>
+                          <mat-option value="1">Camera Module</mat-option>
+                          <mat-option value="2">Microprocessor</mat-option>
+                          <mat-option value="3">Resistor</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+                <div class="formContainer">
+                    <app-button-fab (click)="burn()" color="white" icon="clear" style="margin: 8px"></app-button-fab>
+                    <mat-form-field class="formField">
+                        <mat-label>Burn Address</mat-label>
+                        <input matInput required id="address" name="address" #address>
+                    </mat-form-field>
+                    <mat-form-field class="formField">
+                        <mat-label>Data Type</mat-label>
+                        <mat-select required>
+                          <mat-option value="0">ASIC Miner</mat-option>
+                          <mat-option value="1">Camera Module</mat-option>
+                          <mat-option value="2">Microprocessor</mat-option>
+                          <mat-option value="3">Resistor</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </div>
+            </mat-card>
+          </div>
+</div>
 </div>

@@ -21,6 +21,11 @@ import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
 import { DataPageComponent } from './data-page/data-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 @NgModule({
@@ -47,7 +52,12 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

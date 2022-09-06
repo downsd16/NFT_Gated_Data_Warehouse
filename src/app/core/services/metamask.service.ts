@@ -6,12 +6,12 @@ import detectEthereumProvider  from "@metamask/detect-provider";
 import { ethers } from 'ethers';
 import { __values } from 'tslib';
 import { Router } from '@angular/router';
-const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
+const ControllerABI = require('./accessController.json');
 
 const WEB_SRVR_URL = 'http://localhost:3003'
 const API_URL = "https://eth-rinkeby.alchemyapi.io/v2/k6YWwXNqqI4RjKRe--6p9D4sPQiZJySK"
 const DEPLOY_ADDRESS = "0x1cE7AA35Ce1a3761ADf9b3A80d4D536c305aEae1";
-const TEST1_PUB_KEY = "0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E";
+const HOLDER_PUB_KEY = "0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E";     //0x85c72a6a9d926fb95a5ff1556031796faffd7805
 
 
 interface NonceResponse {
@@ -178,7 +178,7 @@ private toHex(stringToConvert: string) {
 public async pauseContract() {
 
   const provider = new ethers.providers.JsonRpcProvider(API_URL)
-  const signer = new ethers.Wallet(TEST1_PUB_KEY, provider)
+  const signer = new ethers.Wallet(HOLDER_PUB_KEY, provider)
 
   const contractInstanceForUser = new ethers.Contract(
     DEPLOY_ADDRESS,
@@ -204,7 +204,7 @@ public async pauseContract() {
 public async burnNFT() {
 
   const provider = new ethers.providers.JsonRpcProvider(API_URL)
-  const signer = new ethers.Wallet(TEST1_PUB_KEY, provider)
+  const signer = new ethers.Wallet(HOLDER_PUB_KEY, provider)
 
   const contractInstanceForUser = new ethers.Contract(
     DEPLOY_ADDRESS,

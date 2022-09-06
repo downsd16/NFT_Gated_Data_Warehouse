@@ -1,0 +1,71 @@
+<div class="wrapperMain">
+<div class="homeHeaderContainer">
+    <mat-card class="cardMain">
+      <mat-card-header class="cardHeader">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jabil_Circuit_Logo.svg"
+          style="max-width: 60%; height: auto; width: auto; margin-bottom: 5%"
+        />
+        <h1>Data Warehouse Home</h1>
+      </mat-card-header>
+    </mat-card>
+  </div>
+
+<div class="homeBodyContainer">
+  <div
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutAlign="center"
+  fxLayoutGap="10px"
+  fxFlexFill
+  class="bodyContent"
+  >
+  <mat-card class="buttonContainer" fxFlex="25%">
+    <app-button-fab  color="orange" icon="menu" style="margin-top: 20px; margin-bottom: 20px;" [matMenuTriggerFor]="menu"></app-button-fab>
+    <app-button-fab  color="orange" icon="home" style="margin-bottom: 20px" (click)="returnHome()"></app-button-fab>
+    <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
+      <button mat-menu-item class="menuItem"
+          *ngFor="let page of listPages"
+          (click)="updatePart(page.route)"
+          [disabled]="!page.enable"
+          >{{ page.title }}
+      </button>
+    </mat-menu>
+  </mat-card>
+
+  <mat-card class="cardMain" fxFlex="75%">
+    <mat-card-header class="cardHeader">
+      <mat-card-title>
+        <h1>Data Summary: {{ displayPartName }}</h1>
+      </mat-card-title>
+    </mat-card-header>
+
+    <div
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxFlexFill
+
+      class="dataContainer"
+      >
+        <div class="cardMain" fxFlex="50%">
+          <p>Twelve Month Volume</p>
+          <app-button-fab  color="orange" icon="calendar_today" style="margin: 10px"></app-button-fab>
+          <p>{{ displayTwelveMonth }}</p>
+        </div>
+        <div class="cardMain" fxFlex="50%">
+          <p>Total Open Purchase Orders</p>
+          <app-button-fab  color="orange" icon="cached" style="margin: 10px"></app-button-fab>
+          <p>{{ displayTotalOpenPOValue }}</p>
+        </div>
+        <div class="cardMain" fxFlex="50%">
+          <p>Total Demanded Quantity</p>
+          <app-button-fab  color="orange" icon="bar_chart" style="margin: 10px"></app-button-fab>
+          <p>{{ displayTotalDemandQuantity }} units</p>
+        </div>
+      </div>
+  </mat-card>
+</div>
+</div>
+</div>

@@ -16,6 +16,16 @@
 }
 
 .buttonContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+    background-color:white;
+    margin: 0px;
+    max-height: 80%;
+}
+
+.dataContainer {
     max-height: 80%;
 }
 
@@ -35,6 +45,8 @@
 p {
     color: #005288;
     font-weight: bold;
+    font-size: 14px;
+    text-align:center;
 }
 
 h1 {
@@ -82,4 +94,8 @@ div {
 
 app-button-fab {
     align-items: center;
+}
+
+.menuItem {
+    max-width:200px;
 }

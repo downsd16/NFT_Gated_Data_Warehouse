@@ -7,12 +7,13 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { AdminConsoleComponent } from './admin-console/admin-console.component';
 import { AdminGuard } from './core/guards/admin.guard';
 import { LineGraphComponent } from './line-graph/line-graph.component';
+import { DataPageComponent } from './data-page/data-page.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   { path: 'admin', component: AdminConsoleComponent, canActivate: [AdminGuard]},
-  { path: 'data', component: LineGraphComponent, canActivate: [AuthGuard]},
+  { path: 'data', component: DataPageComponent},
   { path: '**', component: PageNotFoundComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full'},
 ];

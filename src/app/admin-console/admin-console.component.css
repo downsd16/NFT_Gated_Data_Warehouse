@@ -1,9 +1,28 @@
 /* Mat-Card Classes */
+
+.wrapperMain {
+    margin-top: 12.5%;
+    margin-bottom: 12.5%;
+    max-height: 100vh;
+}
+
 .cardMain {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color:white;
+    background-color:black;
+    margin: 0px;
+    max-height: 80%;
+}
+
+.buttonContainer {
+    max-height: 80%;
+}
+
+.cardTest {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .cardHeader {
@@ -13,27 +32,78 @@
     margin-bottom: 0px;
 }
 
-.cardActions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+p {
+    color: white;
+    font-weight: bold;
 }
 
 h1 {
-    font-size: 20px;
-    color: #005288;
+    font-size: 16px;
+    color: white;
 }
 
+
+
 /* Container Classes */
-.loginContainer {
-    display: inline-block;
-    max-width: auto;
-    margin: 30px auto;
+
+.homeHeaderContainer {
+    max-width: 85%;
+    max-width: 600px;
+    margin: 0px 30px 10px 30px;
     overflow: auto;
     min-height: auto;
-    padding: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
   }
 
-.loginContent {
+.homeBodyContainer {
+    text-align: center;
+    overflow: hidden;
+    max-width: 85%;
+    max-width: 600px;
+    margin: 30px 30px 10px 30px;
+    overflow: auto;
+    min-height: auto;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.homeContent {
     margin: 0px;
+}
+
+div {
+    overflow:hidden;
+}
+
+.bodyContent {
+    padding: 1px;
+}
+
+.formContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color:black;
+    margin-left: 10px;
+    max-height: 80%;
+}
+
+.formField {
+    min-width: 100px;
+    max-width: 150px;
+    font-size: 10px;
+    margin-bottom: 0px;
+}
+
+.innerFormDiv {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color:black;
+}
+
+
+mat-form-field.mat-form-field {
+    font-size: 12px;
 }

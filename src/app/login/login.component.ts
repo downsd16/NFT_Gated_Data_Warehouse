@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { MetamaskService } from '../core/services/metamask.service';
 
 @Component({
   selector: 'app-login',
@@ -9,11 +8,15 @@ import { MetamaskService } from '../core/services/metamask.service';
 })
 export class LoginComponent implements OnInit {
 
+  emptyArray: any = [false,false,false,false]
+
   constructor(
     private _router: Router
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    
+  }
 
   async login() {
     this._router.navigate(['home'])

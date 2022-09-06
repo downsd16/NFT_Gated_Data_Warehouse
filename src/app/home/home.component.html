@@ -1,9 +1,10 @@
+<div class="wrapperMain">
 <div class="homeHeaderContainer">
     <mat-card class="cardMain">
       <mat-card-header class="cardHeader">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/3/38/Jabil_Circuit_Logo.svg"
-          style="max-width: 75%; height: auto; width: auto; margin-bottom: 5%"
+          style="max-width: 60%; height: auto; width: auto; margin-bottom: 5%"
         />
         <h1>Data Warehouse Home</h1>
       </mat-card-header>
@@ -19,7 +20,7 @@
       fxFlexFill
       class="bodyContent"
       >
-      <mat-card class="cardMain" fxFlex="33%">
+      <mat-card class="cardMain" fxFlex="25%">
         <mat-card-header class="cardHeader">
           <mat-card-title>
             <h1>Wallet</h1>
@@ -39,7 +40,7 @@
         </mat-card-actions>
       </mat-card>
   
-      <mat-card class="cardMain" fxFlex="67%">
+      <mat-card class="cardMain" fxFlex="75%">
         <mat-card-header class="cardHeader">
           <mat-card-title>
             <h1>Data Ticket Actions</h1>
@@ -55,15 +56,19 @@
 
           class="buttonContainer"
           >
-          <div class="cardMain" fxFlex="50%">
+          <div class="cardMain" fxFlex="25%">
             <app-button-fab (click)="viewData()" color="orange" icon="timeline" style="margin: 10px"></app-button-fab>
             <p>Data</p>
           </div>
-          <div class="cardMain" fxFlex="50%">
+          <div class="cardMain" fxFlex="25%">
             <app-button-fab (click)="visitMarketplace()" color="orange" icon="store" style="margin: 10px"></app-button-fab>
             <p>Market</p>
           </div>
-          <div class="cardMain" fxFlex="50%">
+          <div class="cardMain" fxFlex="25%">
+            <app-button-fab (click)="learning()" color="orange" icon="question_answer" style="margin: 10px"></app-button-fab>
+            <p>Learn</p>
+          </div>
+          <div class="cardMain" fxFlex="25%">
             <app-button-fab (click)="adminConsole()" color="orange" icon="developer_board" style="margin: 10px"></app-button-fab>
             <p>Admin</p>
           </div>
@@ -71,4 +76,5 @@
       </mat-card>
     </div>
   </div>
+</div>
   

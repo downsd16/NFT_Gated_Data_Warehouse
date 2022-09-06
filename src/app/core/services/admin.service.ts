@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import detectEthereumProvider from '@metamask/detect-provider';
 
 const ControllerABI = require('../../../../../backend_nft/artifacts/contracts/controller.sol/accessController.json');
-const DEPLOY_ADDRESS = '0x20e73B4023bBcaBeA040aC529b14A3f807D3d912';
+const DEPLOY_ADDRESS = '0x1cE7AA35Ce1a3761ADf9b3A80d4D536c305aEae1';
 const TEST1_PUB_KEY = '0xDeD8a8dADdf33F6F11dA36Ec155EfFD3D43fa99E';
 const TEST2_PUB_KEY = '0x61A28d63038eB03CD242BA659201bDe0DCB83C70';
 
@@ -78,7 +78,8 @@ export class AdminService {
       ControllerABI.abi,
       signer
     );
-    await contractInstanceForUser['burnNFT'](TEST2_PUB_KEY, 1, 1).then(() => {
+    
+    await contractInstanceForUser['burnNFT'](TEST2_PUB_KEY, 3, 1).then(() => {
       return true;
     });
   }

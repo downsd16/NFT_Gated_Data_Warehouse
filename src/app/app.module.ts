@@ -18,13 +18,12 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { AdminConsoleComponent } from './admin-console/admin-console.component';
 import { LineGraphComponent } from './line-graph/line-graph.component';
 import * as CanvasJSAngularChart from '../assets/canvasjs.angular.component';
-import { DataPageComponent } from './data-page/data-page.component';
 import { MenuComponent } from './menu/menu.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
@@ -40,7 +39,6 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     AdminConsoleComponent,
     LineGraphComponent,
     CanvasJSChart,
-    DataPageComponent,
     MenuComponent
   ],
   imports: [
